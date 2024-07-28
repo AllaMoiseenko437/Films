@@ -1,15 +1,15 @@
 class MoviesLibrary:
     def __init__(self, genres):
-        movies_list = []
         self.data = {}
         for genre in genres:
-            self.data[genre] = movies_list
+            self.data[genre] = []
 
     def add_movie(self, genre, title):
-        self.data[genre].append(title)
+        if genre in self.data:
+            self.data[genre].append(title)
 
     def recommend(self, genre):
-        return self.data[genre]
+        return self.data.get(genre, [])
 
 
 if __name__ == '__main__':
